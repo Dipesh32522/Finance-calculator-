@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent vs Buy Calculator - Financial Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="container">
+        <h1>Rent vs. Buy Calculator</h1>
+        <div class="calculator">
+            <!-- Shared Inputs -->
+            <div class="input-group">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                    <option value="₹" selected>INR (₹)</option>
+                    <option value="$">USD ($)</option>
+                    <option value="€">EUR (€)</option>
+                </select>
+            </div>
+
+            <!-- Renting Inputs -->
+            <fieldset>
+                <legend>Renting Details</legend>
+                <div class="input-group">
+                    <label for="monthlyRent">Monthly Rent</label>
+                    <input type="number" id="monthlyRent" placeholder="e.g., 15000">
+                </div>
+            </fieldset>
+
+            <!-- Buying Inputs -->
+            <fieldset>
+                <legend>Buying Details</legend>
+                <div class="input-group">
+                    <label for="propertyPrice">Property Price</label>
+                    <input type="number" id="propertyPrice" placeholder="e.g., 5000000">
+                </div>
+                <div class="input-group">
+                    <label for="downPayment">Down Payment</label>
+                    <input type="number" id="downPayment" placeholder="e.g., 1000000">
+                </div>
+                <div class="input-group">
+                    <label for="interestRate">Loan Interest Rate (%)</label>
+                    <input type="number" id="interestRate" placeholder="e.g., 8">
+                </div>
+                <div class="input-group">
+                    <label for="loanTenure">Loan Tenure (Years)</label>
+                    <input type="number" id="loanTenure" placeholder="e.g., 20">
+                </div>
+                <div class="input-group">
+                    <label for="propertyTax">Annual Property Tax Rate (%)</label>
+                    <input type="number" id="propertyTax" placeholder="e.g., 1">
+                </div>
+                <div class="input-group">
+                    <label for="maintenance">Annual Maintenance (% of Property Price)</label>
+                    <input type="number" id="maintenance" placeholder="e.g., 1">
+                </div>
+                 <div class="input-group">
+                    <label for="appreciation">Annual Property Appreciation Rate (%)</label>
+                    <input type="number" id="appreciation" placeholder="e.g., 5">
+                </div>
+            </fieldset>
+
+            <button id="compareBtn">Compare</button>
+
+            <div id="result" class="result">
+                <!-- Results will be displayed here -->
+            </div>
+
+            <div class="chart-container" style="position: relative; height:40vh; width:80vw; max-width: 600px; margin: auto; margin-top: 2rem;">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Understanding the Rent vs. Buy Decision</h2>
+            <p>Deciding whether to rent or buy a home is one of the biggest financial decisions you'll make. This calculator is designed to help you compare the long-term financial implications of both options.</p>
+            <p>By inputting details about the property you're considering buying and what you would pay in rent for a similar home, this tool estimates the total net cost of each path over your loan's tenure. It accounts for your down payment, loan payments, taxes, maintenance, and the potential for your property's value to grow over time.</p>
+
+            <h3>How to Use the Calculator</h3>
+            <ol>
+                <li><strong>Renting Details:</strong> Enter your current or expected monthly rent.</li>
+                <li><strong>Buying Details:</strong> Fill in all the fields related to the property you're considering. Be as accurate as possible with rates and percentages.</li>
+                <li><strong>Compare:</strong> Click the "Compare" button to see a summary and a chart visualizing the total costs. The "Net Cost of Buying" subtracts the future value of your home from your total expenses to show your true financial position.</li>
+            </ol>
+        </div>
+    </div>
+    <script src="rent-vs-buy.js"></script>
+</body>
+</html>
