@@ -1,15 +1,19 @@
-@keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes glowing-border {
+    0% { border-color: #00c6ff; box-shadow: 0 0 5px #00c6ff; }
+    50% { border-color: #a076f9; box-shadow: 0 0 20px #a076f9; }
+    100% { border-color: #00c6ff; box-shadow: 0 0 5px #00c6ff; }
+}
+
+@keyframes subtle-glow {
+    0% { text-shadow: 0 0 2px #00c6ff; }
+    50% { text-shadow: 0 0 8px #a076f9; }
+    100% { text-shadow: 0 0 2px #00c6ff; }
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
-    color: #f0f0f0;
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    background-color: #050a14;
+    color: #d0d0d0;
     margin: 0;
     padding: 0;
     display: flex;
@@ -18,39 +22,31 @@ body {
 }
 
 nav {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background: rgba(10, 10, 20, 0.5);
+    backdrop-filter: blur(2px);
     width: 100%;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #00c6ff;
 }
 
 nav a {
-    color: white;
+    color: #00c6ff;
     margin: 0 20px;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: text-shadow 0.3s;
 }
 
 nav a:hover {
-    color: #00c6ff;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    text-shadow: 0 0 10px #00c6ff;
 }
 
 .container {
-    background: transparent;
     padding: 2rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
     width: 90%;
-    animation: fadeIn 0.8s ease-out;
 }
 
 h1 {
@@ -58,28 +54,31 @@ h1 {
     color: #ffffff;
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    animation: subtle-glow 4s ease-in-out infinite;
 }
 
 .about-subtitle, h3 {
     text-align: center;
-    color: #c0c0c0;
+    color: #a0a0a0;
     font-weight: 300;
 }
 
-.calculator, .card-container {
-    margin-top: 2rem;
+.calculator, .card, .result {
+    background: rgba(15, 20, 40, 0.7);
+    border: 1px solid #00c6ff;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.3);
 }
 
 fieldset {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    border: 1px dashed rgba(0, 198, 255, 0.5);
     padding: 1.5rem;
     margin-bottom: 1rem;
 }
 
 legend {
     padding: 0 0.5rem;
-    color: #00c6ff;
+    color: #a076f9;
     font-weight: bold;
 }
 
@@ -91,84 +90,66 @@ legend {
 
 .input-group label {
     margin-bottom: 0.5rem;
-    color: #f0f0f0;
+    color: #d0d0d0;
     font-weight: 500;
 }
 
 .input-group input, .input-group select {
     padding: 0.8rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    background: #0a0a14;
+    border: 1px solid #00c6ff;
     font-size: 1rem;
     color: #ffffff;
-    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .input-group input:focus, .input-group select:focus {
     outline: none;
-    border-color: #00c6ff;
-    box-shadow: 0 0 5px rgba(0, 198, 255, 0.5);
+    box-shadow: 0 0 10px #00c6ff;
 }
 
 button {
     padding: 1rem;
-    background: linear-gradient(45deg, #00c6ff, #0072ff);
-    color: white;
-    border: none;
-    border-radius: 4px;
+    background: transparent;
+    color: #00c6ff;
+    border: 2px solid #00c6ff;
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.4s, text-shadow 0.4s;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+    color: #ffffff;
+    text-shadow: 0 0 10px #00c6ff;
+    animation: glowing-border 2s ease-in-out infinite;
 }
 
 .result {
     margin-top: 2rem;
-    padding: 1.5rem;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
     text-align: center;
     font-size: 1.2rem;
     color: #ffffff;
-}
-
-.content {
-    margin-top: 2rem;
-}
-
-.about-container {
-    max-width: 1200px;
 }
 
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-}
-
-.card {
-    background: transparent; /* Will be handled by glassmorphism styles */
-    border-radius: 12px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 255, 255, 0.25);
+    margin-top: 2rem;
 }
 
 .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 12px 12px 0 0;
+    filter: grayscale(80%) contrast(1.2);
+    transition: filter 0.3s;
+}
+
+.card:hover img {
+    filter: grayscale(20%) contrast(1);
 }
 
 .card-content {
@@ -176,12 +157,11 @@ button:hover {
 }
 
 .card-content h3 {
-    margin-top: 0;
-    color: #ffffff;
+    color: #00c6ff;
 }
 
 .card-content p {
-    color: #c0c0c0;
+    color: #a0a0a0;
     line-height: 1.6;
 }
 
@@ -191,7 +171,8 @@ button:hover {
 }
 
 .card.disabled {
-    opacity: 0.5;
+    filter: grayscale(100%);
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
@@ -201,43 +182,11 @@ button:hover {
 }
 
 /* Chart.js Global Settings */
-.chart-container {
-    padding: 1rem;
-    border-radius: 8px;
-}
-
-/* Glassmorphism Components */
-.calculator, .card, .result {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.card {
-    border-radius: 12px; /* Already set, but good to confirm */
-}
-
-.result {
-    background: rgba(0, 0, 0, 0.25); /* Darker glass for result */
-}
-
-
-/* Make chart text white */
-.chartjs-render-monitor {
-    color: white;
-}
-Chart.defaults.color = '#fff';
-Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.2)';
-
+Chart.defaults.color = '#d0d0d0';
+Chart.defaults.borderColor = 'rgba(0, 198, 255, 0.2)';
 
 @media (max-width: 600px) {
     .container {
-        width: 100%;
-        margin-top: 0;
-        border-radius: 0;
-        box-shadow: none;
         padding: 1rem;
     }
     h1 {
