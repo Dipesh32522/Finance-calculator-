@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIP Calculator (Systematic Investment Plan) - Financial Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>SIP Calculator</h1>
+        <div class="calculator">
+            <div class="input-group">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                    <option value="₹" selected>INR (₹)</option>
+                    <option value="$">USD ($)</option>
+                    <option value="€">EUR (€)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="monthlyInvestment">Monthly Investment</label>
+                <input type="number" id="monthlyInvestment" placeholder="e.g., 5000">
+            </div>
+            <div class="input-group">
+                <label for="returnRate">Expected Return Rate (% p.a.)</label>
+                <input type="number" id="returnRate" placeholder="e.g., 12">
+            </div>
+            <div class="input-group">
+                <label for="timePeriod">Time Period (Years)</label>
+                <input type="number" id="timePeriod" placeholder="e.g., 10">
+            </div>
+
+            <button id="calculateBtn">Calculate</button>
+
+            <div id="result" class="result">
+                <!-- Results will be displayed here -->
+            </div>
+
+            <div class="chart-container" style="position: relative; height:40vh; width:80vw; max-width: 400px; margin: auto; margin-top: 2rem;">
+                <canvas id="sipChart"></canvas>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Understanding Your SIP Investment</h2>
+            <p>A Systematic Investment Plan (SIP) is a disciplined way of investing, where you invest a fixed amount of money at regular intervals. This calculator helps you estimate the future value of your monthly SIP investments.</p>
+            <h3>How to Use the Calculator</h3>
+            <ol>
+                <li><strong>Monthly Investment:</strong> Enter the amount you plan to invest each month.</li>
+                <li><strong>Expected Return Rate:</strong> Enter the annual rate of return you expect from your investment.</li>
+                <li><strong>Time Period:</strong> Enter the total duration in years for which you plan to invest.</li>
+            </ol>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Financial Calculators. All Rights Reserved.</p>
+    </footer>
+    <script src="sip-calculator.js"></script>
+</body>
+</html>
